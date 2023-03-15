@@ -1,0 +1,16 @@
+<ion-content class="todos">
+  <form (submit)="addTodo()">
+    <ion-input
+    type="text" 
+    name="inputTodo" 
+    placeholder="enterTodo"
+    class="todo-input"
+    [(ngModel)]="inputTodo"/>
+    <ion-input type="submit" value="Add Todo" class="todo-submit"/>
+  </form>
+  <div *ngFor="let todo of todos; let i = index;" class="todo {{ todo.completed ? 'done' : '' }}">
+    <div class="id">{{ i }}</div>
+    <div class="content" (click)="toggleDone(i)">{{ todo.content }}</div>
+    <ion-button (click)="deleteTodo(i)" color="danger" class="delete">Remove</ion-button>
+  </div>
+</ion-content>
